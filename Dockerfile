@@ -91,7 +91,8 @@ RUN apt-get install -y \
 	libxrender1 \
 	libxrandr2 \
 	libxcursor1 \
-	libxft2
+	libxft2 \
+	libxi6
 
 RUN mkdir /opt/Xilinx && chown $USER:$USER /opt/Xilinx
 RUN mkdir /home/$USER && chown $USER:$USER /home/$USER
