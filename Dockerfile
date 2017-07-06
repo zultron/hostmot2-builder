@@ -13,12 +13,21 @@ ENV LC_ALL C.UTF-8
 ENV LANGUAGE C.UTF-8
 ENV LANG C.UTF-8
 
+# Undefine to use proxy for apt package installation
+#ENV HTTP_PROXY http://192.168.1.42:3128/
+
 # turn off recommends on container OS
 RUN echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > \
             /etc/apt/apt.conf.d/01norecommend
 
 # use stable Debian mirror
 RUN sed -i /etc/apt/sources.list -e 's/deb.debian.org/ftp.debian.org/'
+
+# use http proxy for packages
+RUN if test -n "$HTTP_PROXY"; then \
+        echo "Acquire::http::proxy \"$HTTP_PROXY\";" > \
+	    /etc/apt/apt.conf.d/80proxy; \
+    fi
 
 ###################################################################
 # Configure 3rd-party apt repos, add foreign arches, and update OS
