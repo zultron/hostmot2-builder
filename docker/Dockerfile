@@ -94,8 +94,6 @@ RUN apt-get install -y \
 	libxft2 \
 	libxi6
 
-RUN mkdir /opt/Xilinx && chown $USER:$USER /opt/Xilinx
-
 # ###########################################
 # # Install Xilinx tools
 
@@ -123,6 +121,10 @@ ENV PATH /usr/lib/ccache:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin
 RUN echo "${USER}:x:${UID}:${GID}::${HOME}:${SHELL}" >> /etc/passwd
 RUN echo "${USER}:x:${GID}:" >> /etc/group
 RUN mkdir /home/$USER && chown $USER:$USER /home/$USER
+
+# More proxy config for git
+ENV http_proxy $HTTP_PROXY
+ENV https_proxy $HTTP_PROXY
 
 # Customize the run environment to your taste
 # - bash prompt

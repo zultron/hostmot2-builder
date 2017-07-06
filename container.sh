@@ -3,6 +3,7 @@
 # Parameters
 IMAGE=hostmot2-builder
 NAME=${IMAGE}
+TOPDIR="$(readlink -f $(dirname $0))"
 
 # Check for existing containers
 EXISTING="$(docker ps -aq --filter=name=${NAME})"
@@ -29,9 +30,10 @@ exec docker run --rm \
     -u `id -u`:`id -g` \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /dev/dri:/dev/dri \
-    -v $HOME:/home/travis \
-    -v $PWD:$PWD \
-    -w $PWD \
+    -v "$HOME":/home/travis \
+    -v "$TOPDIR":"$TOPDIR" \
+    -v "$TOPDIR/Xilinx":"/opt/Xilinx" \
+    -w "$TOPDIR" \
     -e DISPLAY \
     -h ${NAME} --name ${NAME} \
     ${IMAGE} "$@"
