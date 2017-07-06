@@ -29,7 +29,7 @@ exec docker run --rm \
     -u `id -u`:`id -g` \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /dev/dri:/dev/dri \
-    -v $HOME:$HOME \
+    -v $HOME:/home/travis \
     -v $PWD:$PWD \
     -w $PWD \
     -e DISPLAY \

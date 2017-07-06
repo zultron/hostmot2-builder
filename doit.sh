@@ -1,21 +1,20 @@
 #!/bin/bash -xe
 
-TMPDIR=/tmp/unpack
 CURDIR="$PWD"
-TARBALL="$CURDIR/ISE_DVD_92i.tar.gz"
+TMPDIR="$CURDIR/unpack"
+TARBALL="$CURDIR/Xilinx_ISE_DS_Lin_13.4_O.87xd.3.0.tar"
 
 
 doit() {
     # Unpack Xilinx ISE into temp directory
-    mkdir -p $TMPDIR
-    cd $TMPDIR
-    if ! test -f .unpacked; then
-	tar xzf $TARBALL --strip-components=1
-	touch .unpacked
+    mkdir -p "${TMPDIR}"
+    if ! test -f "${TMPDIR}/.unpacked"; then
+	tar xCf "${TMPDIR}" "${TARBALL}" --strip-components=1
+	touch "${TMPDIR}/.unpacked"
     fi
 
     # Run installer
-    bin/lin64/setup
+    "${TMPDIR}/xsetup"
     
     # # Clean up
     # cd $CURDIR

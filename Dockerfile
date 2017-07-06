@@ -95,7 +95,6 @@ RUN apt-get install -y \
 	libxi6
 
 RUN mkdir /opt/Xilinx && chown $USER:$USER /opt/Xilinx
-RUN mkdir /home/$USER && chown $USER:$USER /home/$USER
 
 # ###########################################
 # # Install Xilinx tools
@@ -123,6 +122,7 @@ ENV SHELL /bin/bash
 ENV PATH /usr/lib/ccache:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin
 RUN echo "${USER}:x:${UID}:${GID}::${HOME}:${SHELL}" >> /etc/passwd
 RUN echo "${USER}:x:${GID}:" >> /etc/group
+RUN mkdir /home/$USER && chown $USER:$USER /home/$USER
 
 # Customize the run environment to your taste
 # - bash prompt
