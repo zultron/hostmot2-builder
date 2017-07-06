@@ -5,6 +5,7 @@ TMPDIR="$CURDIR/unpack"
 TARBALL="$CURDIR/Xilinx_ISE_DS_Lin_13.4_O.87xd.3.0.tar"
 HM2FW_DIR="${CURDIR}/hostmot2-firmware"
 HM2FW_URL="https://github.com/LinuxCNC/hostmot2-firmware.git"
+LICENSE_FILE="${CURDIR}/Xilinx/13.4/ISE_DS/EDK/data/core_licenses/Xilinx.lic"
 
 doit() {
     # Unpack Xilinx ISE into temp directory
@@ -24,6 +25,17 @@ doit() {
 	echo "Xilinx 13.4 SDK already installed"
     fi
     
+    # Add license to license file
+    if ! grep -q 'PACKAGE ISE_WebPACK xilinxd' "${LICENSE_FILE}"; then
+	if test -f "${CURDIR}/Xilinx.lic"; then
+	    cat "${CURDIR}/Xilinx.lic" >> "${LICENSE_FILE}"
+	else
+	    print "ERROR:  No license file found in ${CURDIR}/Xilinx.lic!"
+	fi
+    else
+	echo "License already present in ${LICENSE_FILE}"
+    fi
+
     # Clone hostmot2-firmware into current directory
     if ! test -d "${HM2FW_DIR}/.git"; then
 	git clone "${HM2FW_URL}" "${HM2FW_DIR}"
