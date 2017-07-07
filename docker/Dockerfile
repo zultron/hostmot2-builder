@@ -13,9 +13,6 @@ ENV LC_ALL C.UTF-8
 ENV LANGUAGE C.UTF-8
 ENV LANG C.UTF-8
 
-# Undefine to use proxy for apt package installation
-#ENV HTTP_PROXY http://192.168.1.42:3128/
-
 # turn off recommends on container OS
 RUN echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > \
             /etc/apt/apt.conf.d/01norecommend
