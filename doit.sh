@@ -58,13 +58,13 @@ install-ise-13() {
 
 install-ise-9() {
     # Install Xilinx ISE 9.2
-    if ! test -f "${CURDIR}/Xilinx/92i/.xinstall/install.log" || \
-	    ! grep -q 'summary= Xilinx Setup Installation Complete' \
-	      "${CURDIR}/Xilinx/92i/.xinstall/install.log"; then
+    if ! test -f "${CURDIR}/Xilinx/9.2i/.xinstall/install.log" || \
+	    ! grep -q 'summary= Batch install completed' \
+	      "${CURDIR}/Xilinx/9.2i/.xinstall/install.log"; then
 
 	# Unpack tarball into temp directory
 	if ! test -f "${TMPDIR9}/.unpacked" && \
-		! test -f "${CURDIR}/Xilinx/92i/.xinstall/install.log"; then
+		! test -f "${CURDIR}/Xilinx/9.2i/.xinstall/install.log"; then
 	    echo "Unpacking tarball:"
 	    echo "    '${TARBALL9}'"
 	    echo "    -> '${TMPDIR9}'"
