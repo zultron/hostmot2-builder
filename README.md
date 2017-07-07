@@ -36,7 +36,7 @@ Builds hostmot2 firmware from [LinuxCNC source][source] in a Docker container
 
 - Once the above steps are complete, unpack, install and configure
   Xilinx ISE
-  - `./container.sh ./doit.sh`
+  - `./container.sh ./install-ise.sh`
 
 - Now the build environment is complete; from here, you may run
   - `./container.sh make -C hostmot2-firmware`
