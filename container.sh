@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Parameters
 IMAGE=hostmot2-builder
 NAME=${IMAGE}
 TOPDIR="$(readlink -f $(dirname $0))"
+UID_GID=`id -u`:`id -g`
 
 # Check for existing containers
 EXISTING="$(docker ps -aq --filter=name=${NAME})"
@@ -25,9 +26,13 @@ if test -n "${EXISTING}"; then
     fi
 fi
 
+
+
+test -d "${TOPDIR}/Xilinx" || mkdir -p "${TOPDIR}/Xilinx"
+set -x
 exec docker run --rm \
     -it --privileged \
-    -u `id -u`:`id -g` \
+    -u "$UID_GID" \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /dev/dri:/dev/dri \
     -v "$HOME":/home/travis \
