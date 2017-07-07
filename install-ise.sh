@@ -43,6 +43,7 @@ install-ise() {
 	    TARBALL="${CURDIR}/Xilinx_ISE_DS_Lin_13.4_O.87xd.3.0.tar"
 	    SETUP="${TMPDIR}/bin/lin64/batchxsetup"
 	    ADD_LICENSE=true
+	    PATCH_UPDATE=false
 	    ;;
 	10.1)
 	    SUITE=ISE
@@ -50,6 +51,7 @@ install-ise() {
 	    TARBALL="${CURDIR}/ISE_DS.tar"
 	    SETUP="${TMPDIR}/bin/lin64/setup"
 	    ADD_LICENSE=false
+	    PATCH_UPDATE=true
 	    ;;
     esac
     INSTALL_LOG="${CURDIR}/Xilinx/${VER}/${SUITE}/.xinstall/install.log"
@@ -62,6 +64,13 @@ install-ise() {
 	    echo "        into '${TMPDIR}'"
 	    mkdir -p "${TMPDIR}"
 	    tar xCf "${TMPDIR}" "${TARBALL}" --strip-components=1
+
+	    if $PATCH_UPDATE; then
+		echo "    Monkey-patching xilinxupdate not to run"
+		mv "${TMPDIR}/bin/lin64/xilinxupdate" "${TMPDIR}/bin/lin64/xilinxupdate-"
+		cp "${CURDIR}/lib/xilinxupdate" "${TMPDIR}/bin/lin64/"
+	    fi
+
 	    touch "${TMPDIR}/.unpacked"
 	else
 	    echo "    Xilinx tarball already unpacked"
