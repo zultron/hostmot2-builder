@@ -44,6 +44,7 @@ install-ise() {
 	    SETUP="${TMPDIR}/bin/lin64/batchxsetup"
 	    ADD_LICENSE=true
 	    PATCH_UPDATE=false
+	    INSTALL_LOG="${CURDIR}/Xilinx/${VER}/${SUITE}/.xinstall/install.log"
 	    ;;
 	10.1)
 	    SUITE=ISE
@@ -52,9 +53,9 @@ install-ise() {
 	    SETUP="${TMPDIR}/bin/lin64/setup"
 	    ADD_LICENSE=false
 	    PATCH_UPDATE=true
+	    INSTALL_LOG="${CURDIR}/Xilinx/${VER}/.xinstall/install.log"
 	    ;;
     esac
-    INSTALL_LOG="${CURDIR}/Xilinx/${VER}/${SUITE}/.xinstall/install.log"
 
     if ! test -f "${INSTALL_LOG}" || ! grep -q "${SUCCESS_RE}" "${INSTALL_LOG}"; then
 
