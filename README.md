@@ -35,7 +35,7 @@ Builds hostmot2 firmware from [LinuxCNC source][source] in a Docker container
   - `./container.sh ./doit.sh`
 
 - Build the firmware
-  - `./container.sh make -C hostmot2-firmware -j4`
+  - `./container.sh make -C hostmot2-firmware`
 
 [xilinx-dls]: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/design-tools/archive.html
 [xilinx-pls]: https://www.xilinx.com/getlicense
