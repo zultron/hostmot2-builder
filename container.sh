@@ -7,7 +7,7 @@ TOPDIR="$(readlink -f $(dirname $0))"
 UID_GID=`id -u`:`id -g`
 
 # Check for existing containers
-EXISTING="$(docker ps -aq --filter=name=${NAME})"
+EXISTING="$(docker ps -aq --filter=name=${NAME}\$)"
 if test -n "${EXISTING}"; then
     # Container exists; is it running?
     RUNNING=$(docker inspect ${EXISTING} | awk '/"Running":/ { print $2 }')
