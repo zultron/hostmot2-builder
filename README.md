@@ -10,15 +10,15 @@ Builds hostmot2 firmware from [LinuxCNC source][source] in a Docker container
   - `git clone https://github.com/zultron/hostmot2-builder`
   - `cd hostmot2-builder`
 
-- Download Xilinx ISE, versions 13.4 and 9.2
+- Download Xilinx ISE, versions 13.4 and 10.1
   - Go to the Xilinx [downloads page][xilinx-dls]
   - Download "ISE Design Suite 13.4 Full Product Installation", "Full
     Installer For Linux (5.8 GB)"
   - Put the file in this directory, naming it
     `Xilinx_ISE_DS_Lin_13.4_O.87xd.3.0.tar`
-  - Download "ISE Foundation 9.2i Full Product Installation", "All
-    Platforms (2.76 GB)"
-  - Put the file in this directory, naming it `ISE_DVD_92i.tar.gz`
+  - Download "ISE Design Suite 10.1  Full Product Installation", "All
+    Platforms (5.91 GB)"
+  - Put the file in this directory, naming it `ISE_DS.tar`
 
 - Obtain a license for `ISE_WebPACK`
   - Go to the Xilinx [product licensing page][xilinx-pls]
