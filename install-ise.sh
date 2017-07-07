@@ -1,13 +1,8 @@
 #!/bin/bash -e
 
 CURDIR="$PWD"
-TMPDIR13="$CURDIR/unpack/13"
-TARBALL13="$CURDIR/Xilinx_ISE_DS_Lin_13.4_O.87xd.3.0.tar"
-TMPDIR10="$CURDIR/unpack/10"
-TARBALL10="$CURDIR/ISE_DS.tar"
 HM2FW_DIR="${CURDIR}/hostmot2-firmware"
 HM2FW_URL="https://github.com/LinuxCNC/hostmot2-firmware.git"
-SUITE="ISE_DS"
 LICENSE_FILE="${CURDIR}/Xilinx/13.4/${SUITE}/EDK/data/core_licenses/Xilinx.lic"
 
 
