@@ -85,7 +85,10 @@ ADD	packagecloud/packagecloud-prune.py /usr/bin/packagecloud-prune
 ADD	packagecloud/packagecloud-upload.sh /usr/bin/packagecloud-upload
 ADD	packagecloud/PackagecloudIo.py /usr/lib/python2.7
 
-# FIXME relocate
+# ###########################################
+# # Install Xilinx tools
+
+# Libraries needed by the graphical installer
 RUN apt-get install -y \
 	libstdc++5 \
 	libxrender1 \
@@ -94,16 +97,6 @@ RUN apt-get install -y \
 	libxft2 \
 	libxi6
 
-# ###########################################
-# # Install Xilinx tools
-
-# # Unpack tarball, run installer, and clean up
-# # - Do this in a separate volume to eliminate several GB from image size
-# RUN	mkdir /tmp/unpack
-# VOLUME	/tmp/unpack
-# COPY	ISE_DVD_92i.tar.gz /tmp/unpack/
-# RUN	tar xvzCf /tmp/unpack ISE_DVD_92i.tar.gz
-# RUN	cd /tmp/unpack && bash -x ./setup
 
 
 ###########################################
