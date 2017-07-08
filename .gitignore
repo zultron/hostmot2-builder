@@ -3,8 +3,9 @@
 /ISE_DS.tar
 /Xilinx.lic
 
-# Unpack directory
-/unpack/
+# Temp directory
+/tmp/*
+!/tmp/.exists
 
 # Install directory
 /Xilinx/

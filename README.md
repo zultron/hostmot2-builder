@@ -14,11 +14,10 @@ Builds hostmot2 firmware from [LinuxCNC source][source] in a Docker container
   - Go to the Xilinx [downloads page][xilinx-dls]
   - Download "ISE Design Suite 13.4 Full Product Installation", "Full
     Installer For Linux (5.8 GB)"
-  - Put the file in this directory, naming it
-    `Xilinx_ISE_DS_Lin_13.4_O.87xd.3.0.tar`
+  - Hide the tarball in `tmp/Xilinx_ISE_DS_Lin_13.4_O.87xd.3.0.tar`
   - Download "ISE Design Suite 10.1  Full Product Installation", "All
     Platforms (5.91 GB)"
-  - Put the file in this directory, naming it `ISE_DS.tar`
+  - Hide the tarball in `tmp/ISE_DS.tar`
 
 - Obtain a license for `ISE_WebPACK`
   - Go to the Xilinx [product licensing page][xilinx-pls]
@@ -29,7 +28,7 @@ Builds hostmot2 firmware from [LinuxCNC source][source] in a Docker container
   - Get the generated license file either from your email or from the
 	"Manage Licenses" tab (by selecting the license and clicking the
 	"Download" down-arrow icon in the lower-left)
-  - Save into `Xilinx.lic`
+  - Hide into `tmp/Xilinx.lic`
 
 - Build the Docker container
   - `docker build -t hostmot2-builder docker`
